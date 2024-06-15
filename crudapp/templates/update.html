@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% block main%}
+
+<form action="" method="POST">
+    {%csrf_token%}
+  <div class="container">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add New employee</h1>
+        </div>
+        <div class="modal-body">
+          
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="form-label">First Name</label>
+              <input type="text" class="form-control" name="first_name" value="{{person.first_name}}" placeholder="Enter First Name" >
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="last_name" value="{{person.last_name}}" placeholder="Enter Last Name">
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" value="{{person.email}}" placeholder="eg-hello@gmail.com">
+            </div>
+          </form>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  </form>
+  
+{%endblock%}

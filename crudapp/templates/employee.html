@@ -1,0 +1,100 @@
+ {% extends "index.html" %}
+
+ {% block main %}
+ <div class="container">
+
+  <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Adde New
+  </button>
+  <div class="card">
+    
+    <div class="card-header">
+      Employee Details 
+    </div>
+    <div class="card-body">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for person in persons %}
+          <tr>
+            <th scope="row">{{person.id}}</th>
+            <td>{{person.first_name}}</td>
+            <td>{{person.last_name}}</td>
+            <td>{{person.email}}</td>
+            <td>
+              <a href="/update/{{person.id}}" class="btn btn-outline-info btn-sm">Update</a>
+              <a href="/delete/{{person.id}}" class="btn btn-outline-danger btn-sm">Delete</a>
+
+            </td>
+
+
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+
+
+
+    
+    </div>
+  </div>
+
+ 
+ 
+ </div>
+
+
+ <!-- Modal -->
+ <form action="" method="POST">
+  {%csrf_token%}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New employee</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" >
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="eg-hello@gmail.com">
+          </div>
+        </form>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</form>
+
+
+ {% endblock %}
